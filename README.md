@@ -70,11 +70,21 @@ The analytical solution for v differs from the one mentioned on [DeepXDE](https:
 
 <br/>
 
-## 2 Paper Summary/Discussion
+## 2 Paper Summary
 
 <br/>
 
-Linear ODEs only, as mentioned in the paper, expanding to spatial or spatio-temporal PDEs with Dirichlet boundary conditions would be challenging.
+This paper gives asymptotic bounds for error in the network output (PINN) output for linear ODEs in terms of the residuals. This bound is shown to be dependent only on time and the largest residual.
 
-Linked ODE Residulas to absolute error showed that we could bound absolute error by a function of residuals.
+The authors linked ODE Residuals to absolute error, showed that we could bound absolute error by a function of residuals. Further, the bound is shown to be tightened by dividing the domain into sub intervals. More the number of intervals, the better bounds we get. The work is very general and can be applied in any network with any training status. There is absolutely no assumption or restriction on the network architecture or the training information. 
+
+The classes of ODEs for which this works include Higher Order and First Order ODEs with constant coefficients, system of first Order ODEs with constant coefficients and ODE with non constant coefficients.
+
+Since, the equations are linear ODEs, we can find solution anlytically by the integrating factor method for ODEs with constant and nonconstant coefficients, similarly for higher order equations we utilize results from first order equations and use integrating factor techniques to bound the error
+
+This work just establishes a bound on the error, however it doesn't touch on  reducing the error using the residual or otherwise other such consideration. 
+
+As mentioned in the paper itself, the current work is for Linear ODEs only, expanding to spatial or spatio-temporal PDEs with boundary conditions would be challenging. Bounding and Quantifying the error where the exact/analytical solution cannot be derived or is computationally infeasible would be a good direction to extend upon. 
+
+
 
