@@ -12,22 +12,24 @@ This repository contains the implementations of PINNs for a few standard equatio
 In this section of the equation, we have three files.
 
 Burgers.ipynb
+
 Burgers_Inference.ipynb
+
 Burgers_Discovery.ipynb
 
-For burgers equation the analytical solution (y values) are picked up from burgers-shock.mat, used this data file in the original repository for Burgers_Inference.ipynb and Burgers_Discovery.ipynb
+For the burgers equation, the analytical solution (y values) is picked up from the burgers-shock.mat used this data file in the original repository for Burgers_Inference.ipynb and Burgers_Discovery.ipynb
 
-The inference and discovery notebooks import the exact solution (analytic solution) from a the data, using which we can calculate the relative L2 error between the exact solution and the one predicted by the network.
+The inference and discovery notebooks import the exact solution (analytic solution) from the data, using which we can calculate the relative L2 error between the exact solution and the one predicted by the network.
 
 In the data-driven discovery method, we have the values for the lambda1 and the lambda2 set by the user initially which the model learns and in turns predicts the equation. We can choose them randomly also, like in the burgers equation, we have them set to 0 and -6, whereas the actual values are 1 and -0.00318 (Viscosity)
 The model learns the lambda values just as it learns other parameters. The closer the values are to the actual values in the equation the better the model has understood the equation.
 
 The only difference between the discovery and the inference setups is that we add parameters to the equation in the discovery setup which the model learns and helps formulate the equation.
-The data generation and usage and plit between train/test is very similar. We spread a unifrom mesh over the problem sample space.
+The data generation and usage and split between train/test are very similar. We spread a uniform mesh over the problem sample space.
 
-In Burgers.ipynb, we have the training only based on the initial conditions, boundary condition points, the y values (predictions) based on the input data mesh. We do not have analytic/exact solution y values and can't measure the performance. This is an exploratory notebook to just visualize the predictions. 
+In Burgers.ipynb, we have the training only based on the initial conditions, boundary condition points, and the y values (predictions) based on the input data mesh. We do not have analytic/exact solution y values and can't measure the performance. This is an exploratory notebook to just visualize the predictions. 
 
-X values generated through a simple meshgrid or lhs (latin hypercube sampling) (in case of discovery) and used alongwith those read from the file.
+X values are generated through a simple mesh grid or lhs (Latin hypercube sampling) (in case of discovery) and used along with those read from the file.
 
 The entire huge set is used for the testing, whereas for the training, we use a small randomly sampled subset of the same generated set.
 
@@ -41,7 +43,7 @@ The entire huge set is used for the testing, whereas for the training, we use a 
 
 Didn’t have the data file for diffusion or kovasznay flow, so generated the data by the exact (analytical) solution.
 The sizes of the data are chosen such that the execution completes and we don't get memory exceeded.
-For more than the current;;y used sizes of points got a Memory error on Colab (free GPU version) as well as locally. Could have setup an appropriate batch size but didn't explore that option.
+For more than the current; y used sizes of points got a Memory error on Colab (free GPU version) as well as locally. Could have set up an appropriate batch size but didn't explore that option.
 
 All other considerations and settings are similar to those for the burgers equations.
 
@@ -60,7 +62,7 @@ The diffusion_pinn.mat contains the y values for 200x100 data points.
 #### Kovasznay Flow 
 Here we have sampled 200 points for training randomly from the test set
 
-The training setup points on the boundary and initial conditions sampled from the 100 points and initial conditions for the Diffusion.ipynb
+The training setup points on the boundary and initial conditions sampled from the 100 points and initial conditions for the Kovasznay.ipynb
 
 The kovasznay_pinn.mat contains the y values for 200x200 data points. This can be decided by using appropriate values of h and k. 
 
